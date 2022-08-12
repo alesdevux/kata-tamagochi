@@ -1,23 +1,27 @@
 import './style.css'
-import javascriptLogo from './javascript.svg'
-import { setupCounter } from './counter.js'
+import Tamagochi from './src/Tamagochi.js';
+
+const tamagochi = new Tamagochi();
 
 document.querySelector('#app').innerHTML = `
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
+    <section id="status">
+      <p id="hunger">hunger: ${tamagochi.hunger}</p>
+      <p id="energy">energy: ${tamagochi.energy}</p>
+      <p id="mood">mood: ${tamagochi.mood}</p>
+    </section>
+
+    <section id="tamagochi">
+      ${tamagochi.tamagochiState()}
+    </section>
+
+    <section id="actions">
+      <button id="play">play</button>
+      <button id="eat">eat</button>
+      <button id="sleep">sleep</button>
+    </section>
   </div>
 `
+// -> appendChild
 
 setupCounter(document.querySelector('#counter'))
